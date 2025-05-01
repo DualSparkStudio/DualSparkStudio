@@ -1,12 +1,11 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, useAnimation } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { Card, CardContent } from './ui/card';
-import { Button } from './ui/button';
-import { FiExternalLink, FiGithub, FiChevronRight } from 'react-icons/fi';
 import { projects } from '@/lib/data';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
+import { useEffect, useRef, useState } from 'react';
+import { FiChevronRight, FiExternalLink, FiGithub } from 'react-icons/fi';
 import FloatingObject from './FloatingObject';
+import { Button } from './ui/button';
+import { Card, CardContent } from './ui/card';
 
 // Project categories
 const categories = ['All', 'Web', '3D', 'Mobile', 'E-commerce'];
@@ -210,7 +209,8 @@ const Projects = () => {
           }}
         >
           <Button variant="outline" size="lg" className="group">
-            View All Projects
+            <a href="https://dualsparkstudio.github.io/showcase/" target="_blank" rel="noopener noreferrer">
+            View All Projects</a>
             <FiChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
           </Button>
         </motion.div>

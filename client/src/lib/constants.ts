@@ -40,22 +40,19 @@ export const SECTIONS = {
 // Social media links
 export const SOCIAL_LINKS = {
   github: 'https://github.com/dualsparkstudio',
-  twitter: 'https://twitter.com/dualsparkstudio',
-  linkedin: 'https://linkedin.com/company/dualsparkstudio',
-  instagram: 'https://instagram.com/dualsparkstudio',
-  facebook: 'https://facebook.com/dualsparkstudio',
-  youtube: 'https://youtube.com/dualsparkstudio'
+  linkedin: 'https://www.linkedin.com/in/dualspark-studio-a50757363',
+  instagram: 'https://www.instagram.com/dualsparkstudio?igsh=MXhndG4xMHV3cHY4ZQ=='
 };
 
 // Contact information
 export const CONTACT_INFO = {
-  email: 'hello@dualsparkstudio.com',
-  phone: '+1 (123) 456-7890',
+  email: 'dualsparkstudio@gmail.com',
+  phone: '+91 9604269875 / +91 8983784848',
   address: {
-    street: '123 Innovation Way',
-    city: 'San Francisco',
-    state: 'CA',
-    zip: '94103',
-    country: 'USA'
+    street: 'Pune',
+    city: 'Pune',
+    state: 'Maharashtra',
+    zip: '412210',
+    country: 'India'
   }
 };

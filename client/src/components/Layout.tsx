@@ -227,11 +227,11 @@ const Layout = () => {
               size="sm"
               onClick={() => {
                 playHit();
-                window.open('https://twitter.com/dualsparkstudio', '_blank');
+                window.open('https://www.linkedin.com/in/dualspark-studio-a50757363', '_blank');
               }}
               className="text-muted-foreground hover:text-primary transition-colors duration-200 btn-hover-effect"
             >
-              Twitter
+              LinkedIn
             </Button>
             <Button 
               variant="ghost" 
@@ -249,11 +249,11 @@ const Layout = () => {
               size="sm"
               onClick={() => {
                 playHit();
-                window.open('https://linkedin.com/company/dualsparkstudio', '_blank');
+                window.open('https://www.linkedin.com/in/dualspark-studio-a50757363', '_blank');
               }}
               className="text-muted-foreground hover:text-primary transition-colors duration-200 btn-hover-effect"
             >
-              LinkedIn
+              Instagram
             </Button>
           </div>
         </div>

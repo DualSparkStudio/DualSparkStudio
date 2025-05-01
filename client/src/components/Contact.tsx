@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { FiFacebook, FiLinkedin, FiMail, FiMapPin, FiPhone, FiSend, FiTwitter, FiYoutube } from 'react-icons/fi';
+import { FiGithub, FiInstagram, FiLinkedin, FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -202,31 +202,7 @@ const Contact = () => {
                       variant="outline"
                       size="icon"
                       className="w-10 h-10 rounded-full relative z-10"
-                      onClick={() => handleSocialClick(SOCIAL_LINKS.facebook || 'https://facebook.com')}
-                      title="Facebook"
-                    >
-                      <FiFacebook size={18} />
-                    </Button>
-                  </div>
-                  
-                  <div className="gradient-border rounded-full bg-background">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="w-10 h-10 rounded-full relative z-10"
-                      onClick={() => handleSocialClick(SOCIAL_LINKS.twitter || 'https://twitter.com')}
-                      title="Twitter"
-                    >
-                      <FiTwitter size={18} />
-                    </Button>
-                  </div>
-                  
-                  <div className="gradient-border rounded-full bg-background">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="w-10 h-10 rounded-full relative z-10"
-                      onClick={() => handleSocialClick(SOCIAL_LINKS.linkedin || 'https://linkedin.com')}
+                      onClick={() => handleSocialClick(SOCIAL_LINKS.linkedin)}
                       title="LinkedIn"
                     >
                       <FiLinkedin size={18} />
@@ -238,10 +214,22 @@ const Contact = () => {
                       variant="outline"
                       size="icon"
                       className="w-10 h-10 rounded-full relative z-10"
-                      onClick={() => handleSocialClick(SOCIAL_LINKS.youtube || 'https://youtube.com')}
-                      title="YouTube"
+                      onClick={() => handleSocialClick(SOCIAL_LINKS.github)}
+                      title="GitHub"
                     >
-                      <FiYoutube size={18} />
+                      <FiGithub size={18} />
+                    </Button>
+                  </div>
+                  
+                  <div className="gradient-border rounded-full bg-background">
+                    <Button
+                      variant="outline"
+                      size="icon"
+                      className="w-10 h-10 rounded-full relative z-10"
+                      onClick={() => handleSocialClick(SOCIAL_LINKS.instagram)}
+                      title="Instagram"
+                    >
+                      <FiInstagram size={18} />
                     </Button>
                   </div>
                 </div>
