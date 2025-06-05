@@ -56,10 +56,11 @@ app.use((req, res, next) => {
     serveStatic(app);
   }
 
-  // Serve the app on port 3000 instead of 5000 which might be blocked
-  // this serves both the API and the client
-  const port = 3000;
+  // Serve the app on a random available port
+  const port = process.env.PORT || 0; // Using 0 will make the OS assign a random available port
   server.listen(port, () => {
-    log(`serving on http://localhost:${port}`);
+    const address = server.address();
+    const actualPort = typeof address === 'object' && address ? address.port : port;
+    log(`serving on http://localhost:${actualPort}`);
   });
 })();

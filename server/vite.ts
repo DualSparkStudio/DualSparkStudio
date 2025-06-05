@@ -1,13 +1,13 @@
 import express, { type Express } from "express";
 import fs from "fs";
+import { type Server } from "http";
+import { nanoid } from "nanoid";
 import path, { dirname } from "path";
 import { fileURLToPath } from "url";
-import { createServer as createViteServer, createLogger } from "vite";
+import { createLogger, createServer as createViteServer } from "vite";
+import viteConfig from "../vite.config";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-import { type Server } from "http";
-import viteConfig from "../vite.config";
-import { nanoid } from "nanoid";
 
 const viteLogger = createLogger();
 
@@ -28,6 +28,9 @@ export async function setupVite(app: Express, server: Server) {
     hmr: { server },
     allowedHosts: true,
   };
+
+  // Serve static files from the client/public directory explicitly
+  app.use(express.static(path.resolve(__dirname, "..", "client", "public")));
 
   const vite = await createViteServer({
     ...viteConfig,
