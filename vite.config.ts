@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   // Set base path for GitHub Pages deployment under /DualSparkStudio/
-  base: '/DualSparkStudio/',
+  base: './',
   plugins: [
     react(),
     runtimeErrorOverlay(),
