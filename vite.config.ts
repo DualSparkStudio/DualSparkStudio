@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   // Set base path for GitHub Pages deployment under /DualSparkStudio/
-  base: '/DualSparkStudio/',
+  base: '/',
   plugins: [
     react(),
     runtimeErrorOverlay(),
@@ -24,7 +24,7 @@ export default defineConfig({
   },
   root: path.resolve(__dirname, "client"),
   build: {
-    outDir: path.resolve(__dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist"),
     emptyOutDir: true,
   },
   // Add support for large models and audio files
