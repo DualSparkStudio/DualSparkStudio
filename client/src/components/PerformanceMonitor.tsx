@@ -3,7 +3,7 @@
  */
 
 import { useEffect } from 'react';
-import { measurePerformance, initPerformanceOptimizations } from '../lib/performance';
+import { initPerformanceOptimizations, measurePerformance } from '../lib/performance';
 
 export const PerformanceMonitor = () => {
   useEffect(() => {
