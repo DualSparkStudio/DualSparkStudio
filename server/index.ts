@@ -3,6 +3,32 @@ import { registerRoutes } from "./routes";
 import { log, serveStatic, setupVite } from "./vite";
 
 const app = express();
+
+// Add compression middleware (if available)
+try {
+  const compression = require('compression');
+  app.use(compression());
+} catch (e) {
+  console.log('Compression middleware not available');
+}
+
+// Add caching headers
+app.use((req, res, next) => {
+  // Cache static assets for 1 year
+  if (req.path.match(/\.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2|ttf|eot)$/)) {
+    res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+  }
+  // Cache HTML for 1 hour
+  else if (req.path.endsWith('.html')) {
+    res.setHeader('Cache-Control', 'public, max-age=3600');
+  }
+  // No cache for API routes
+  else if (req.path.startsWith('/api')) {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+  }
+  next();
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
