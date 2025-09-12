@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser, type Project, type Service, type Contact, type InsertContact } from "@shared/schema";
+import { type Contact, type InsertContact, type InsertProject, type InsertUser, type Project, type Service, type User } from "@shared/schema";
 import { projects as projectsData, services as servicesData } from "../client/src/lib/data";
 
 // modify the interface with any CRUD methods
@@ -9,6 +9,9 @@ export interface IStorage {
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
   getProjects(): Promise<Project[]>;
+  createProject(project: InsertProject): Promise<Project>;
+  updateProject(id: number, project: Partial<InsertProject>): Promise<Project | null>;
+  deleteProject(id: number): Promise<boolean>;
   getServices(): Promise<Service[]>;
   createContact(contact: InsertContact & { createdAt: string }): Promise<Contact>;
 }
@@ -16,14 +19,26 @@ export interface IStorage {
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private contacts: Map<number, Contact>;
+  private projects: Map<number, Project>;
   private contactId: number;
+  private projectId: number;
   currentId: number;
 
   constructor() {
     this.users = new Map();
     this.contacts = new Map();
+    this.projects = new Map();
     this.currentId = 1;
     this.contactId = 1;
+    this.projectId = 1;
+    
+    // Initialize with existing projects data
+    projectsData.forEach(project => {
+      this.projects.set(project.id, project);
+      if (project.id >= this.projectId) {
+        this.projectId = project.id + 1;
+      }
+    });
   }
 
   async getUser(id: number): Promise<User | undefined> {
@@ -44,8 +59,29 @@ export class MemStorage implements IStorage {
   }
 
   async getProjects(): Promise<Project[]> {
-    // Return the projects from the client data file
-    return projectsData;
+    return Array.from(this.projects.values());
+  }
+
+  async createProject(projectData: InsertProject): Promise<Project> {
+    const id = this.projectId++;
+    const project: Project = { ...projectData, id };
+    this.projects.set(id, project);
+    return project;
+  }
+
+  async updateProject(id: number, projectData: Partial<InsertProject>): Promise<Project | null> {
+    const existingProject = this.projects.get(id);
+    if (!existingProject) {
+      return null;
+    }
+    
+    const updatedProject: Project = { ...existingProject, ...projectData };
+    this.projects.set(id, updatedProject);
+    return updatedProject;
+  }
+
+  async deleteProject(id: number): Promise<boolean> {
+    return this.projects.delete(id);
   }
 
   async getServices(): Promise<Service[]> {

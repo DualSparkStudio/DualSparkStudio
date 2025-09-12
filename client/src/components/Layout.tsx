@@ -12,7 +12,11 @@ import Projects from './Projects';
 import Services from './Services';
 import { Button } from './ui/button';
 
-const Layout = () => {
+interface LayoutProps {
+  navigate?: (path: string) => void;
+}
+
+const Layout = ({ navigate }: LayoutProps) => {
   const [activeSection, setActiveSection] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
@@ -126,6 +130,8 @@ const Layout = () => {
                 onClick={() => {
                   if (section === 'home') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
+                  } else if (section === 'projects' && navigate) {
+                    navigate('/projects');
                   } else {
                     scrollToSectionWithTransition(section);
                   }

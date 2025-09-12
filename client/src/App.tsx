@@ -1,26 +1,25 @@
-import { useState, useEffect, Suspense, useRef } from 'react';
-import { QueryClientProvider } from '@tanstack/react-query';
-import { queryClient } from './lib/queryClient';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { 
-  Loader, 
-  OrbitControls, 
-  Stars, 
-  Preload, 
-  AdaptiveDpr, 
-  PerspectiveCamera,
-  useGLTF,
-  Environment
-} from '@react-three/drei';
-import { ThemeProvider } from 'next-themes';
-import Layout from './components/Layout';
-import { Toaster } from './components/ui/sonner';
 import '@fontsource/inter';
-import './index.css';
-import { useAudio } from './lib/stores/useAudio';
+import {
+    AdaptiveDpr,
+    Environment,
+    Loader,
+    OrbitControls,
+    Preload,
+    Stars,
+    useGLTF
+} from '@react-three/drei';
+import { Canvas, useFrame, useThree } from '@react-three/fiber';
+import { Bloom, EffectComposer } from '@react-three/postprocessing';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { ThemeProvider } from 'next-themes';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { EffectComposer, Bloom } from '@react-three/postprocessing';
+import Router from './components/Router';
 import ShootingStars from './components/ShootingStars';
+import { Toaster } from './components/ui/sonner';
+import './index.css';
+import { queryClient } from './lib/queryClient';
+import { useAudio } from './lib/stores/useAudio';
 
 // Preload any models that will be used in the app
 useGLTF.preload('/models/logo.glb');
@@ -274,7 +273,7 @@ const App = () => {
           
           {/* Main Content */}
           <div className="relative z-10">
-            <Layout />
+            <Router />
           </div>
           
           {/* Toast notifications */}
