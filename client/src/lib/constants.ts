@@ -47,7 +47,7 @@ export const SOCIAL_LINKS = {
 // Contact information
 export const CONTACT_INFO = {
   email: 'dualsparkstudio@gmail.com',
-  phone: '+91 9604269875 / +91 8983784848',
+  phone: '+91 9270269875 / +91 7057150584',
   address: {
     street: 'Pune',
     city: 'Pune',
