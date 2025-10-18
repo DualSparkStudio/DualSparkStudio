@@ -1,8 +1,8 @@
 import { Project } from '@shared/schema';
 import { useEffect, useState } from 'react';
 import Admin from '../pages/Admin';
-import ProjectsPage from '../pages/ProjectsPage';
 import Layout from './Layout';
+import ProjectsPage from './ProjectsPage';
 
 // Simple router component for handling different pages
 const Router = () => {
