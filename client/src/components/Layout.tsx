@@ -1,9 +1,8 @@
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 import { useAudio } from '@/lib/stores/useAudio';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useTheme } from 'next-themes';
 import { useCallback, useEffect, useState } from 'react';
-import { FiArrowUp, FiMoon, FiSun } from 'react-icons/fi';
+import { FiArrowUp } from 'react-icons/fi';
 import { toast } from 'sonner';
 import Contact from './Contact';
 import Hero from './Hero';
@@ -19,7 +18,6 @@ interface LayoutProps {
 const Layout = ({ navigate }: LayoutProps) => {
   const [activeSection, setActiveSection] = useState('home');
   const [menuOpen, setMenuOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
   const { backgroundMusic, isMuted, toggleMute, playHit } = useAudio();
   const [pageTransition, setPageTransition] = useState({
@@ -130,8 +128,6 @@ const Layout = ({ navigate }: LayoutProps) => {
                 onClick={() => {
                   if (section === 'home') {
                     window.scrollTo({ top: 0, behavior: 'smooth' });
-                  } else if (section === 'projects' && navigate) {
-                    navigate('/projects');
                   } else {
                     scrollToSectionWithTransition(section);
                   }
@@ -143,27 +139,11 @@ const Layout = ({ navigate }: LayoutProps) => {
                 {section.charAt(0).toUpperCase() + section.slice(1)}
               </Button>
             ))}
-            
-            <Button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              variant="ghost"
-              size="icon"
-              title={theme === 'dark' ? "Switch to light mode" : "Switch to dark mode"}
-            >
-              {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
-            </Button>
           </nav>
 
           {/* Mobile Navigation Toggle */}
           <div className="md:hidden flex items-center">
-            <Button
-              onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-              variant="ghost"
-              size="icon"
-              className="mr-2"
-            >
-              {theme === 'dark' ? <FiSun size={18} /> : <FiMoon size={18} />}
-            </Button>
+            {/* Mobile menu toggle removed - keeping div for future use */}
           </div>
         </div>
       </header>
