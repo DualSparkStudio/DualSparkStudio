@@ -23,8 +23,8 @@ const ContactButtons = () => {
   // On desktop, opens in new tab but may not work (expected behavior)
   const callLink = `tel:+${primaryPhone}`;
   
-  // Website link (home page)
-  const websiteLink = '/';
+  // Website link
+  const websiteLink = 'https://dualsparkstudio.com/';
 
   // Copy email to clipboard
   const handleEmailCopy = async () => {
