@@ -1,7 +1,11 @@
 import { projects } from '@/lib/data';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 import { FiChevronRight, FiExternalLink, FiGithub } from 'react-icons/fi';
 import FloatingObject from './FloatingObject';
 import { Button } from './ui/button';

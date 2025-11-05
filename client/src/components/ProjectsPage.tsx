@@ -1,7 +1,11 @@
 import { Project } from '@shared/schema';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useEffect, useRef, useState } from 'react';
+
+// Register GSAP plugins
+gsap.registerPlugin(ScrollTrigger);
 import { FiChevronRight, FiExternalLink, FiFilter, FiGithub, FiSearch } from 'react-icons/fi';
 import { Badge } from './ui/badge';
 import { Button } from './ui/button';
