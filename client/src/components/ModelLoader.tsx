@@ -54,7 +54,6 @@ const ModelLoader = ({
   // Load the model with error handling
   const { scene, animations, materials } = useGLTF(modelPath, undefined, 
     (e) => {
-      console.error('Error loading model:', e);
       setError(`Failed to load model: ${e.message}`);
       toast.error('Failed to load 3D model');
     });

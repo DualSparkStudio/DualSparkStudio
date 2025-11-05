@@ -78,7 +78,7 @@ const AdminProjects = ({ projects, onAddProject, onUpdateProject, onDeleteProjec
       }
       resetForm();
     } catch (error) {
-      console.error('Error saving project:', error);
+      // Error saving project
     }
   };
 

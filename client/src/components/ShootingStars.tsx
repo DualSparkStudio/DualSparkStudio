@@ -16,16 +16,9 @@ const ShootingStars = ({
   const groupRef = useRef<THREE.Group>(null);
   const starsRef = useRef<THREE.Mesh[]>([]);
   
-  // Log when component mounts for debugging
-  useEffect(() => {
-    console.log('ShootingStars component mounted');
-  }, []);
-  
   // Create a mesh for each shooting star
   useEffect(() => {
     if (!groupRef.current) return;
-    
-    console.log('Creating shooting stars');
     
     // Create a material for the shooting stars with trail effect
     const material = new THREE.MeshBasicMaterial({

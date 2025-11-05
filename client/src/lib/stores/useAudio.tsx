@@ -50,7 +50,7 @@ export const useAudio = create<AudioState>((set, get) => ({
       
       set({ isInitialized: true });
     } catch (error) {
-      console.error("Error initializing sounds:", error);
+      // Error initializing sounds
     }
   },
   
@@ -77,8 +77,7 @@ export const useAudio = create<AudioState>((set, get) => ({
         backgroundMusic.pause();
         toast.info('Sound muted');
       } else {
-        backgroundMusic.play().catch(error => {
-          console.error("Background music play failed:", error);
+        backgroundMusic.play().catch(() => {
           toast.error('Audio playback requires user interaction first. Click anywhere to enable sound.');
         });
         toast.success('Sound enabled');
@@ -92,9 +91,7 @@ export const useAudio = create<AudioState>((set, get) => ({
       // Clone the sound to allow overlapping playback
       const soundClone = hitSound.cloneNode() as HTMLAudioElement;
       soundClone.volume = 0.3;
-      soundClone.play().catch(error => {
-        console.error("Hit sound play prevented:", error);
-      });
+      soundClone.play().catch(() => {});
     }
   },
   
@@ -104,9 +101,7 @@ export const useAudio = create<AudioState>((set, get) => ({
       // Clone for potential overlapping playback
       const soundClone = successSound.cloneNode() as HTMLAudioElement;
       soundClone.volume = 0.4;
-      soundClone.play().catch(error => {
-        console.error("Success sound play prevented:", error);
-      });
+      soundClone.play().catch(() => {});
     }
   }
 }));

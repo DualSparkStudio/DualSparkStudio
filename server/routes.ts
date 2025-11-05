@@ -11,7 +11,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const projects = await storage.getProjects();
       res.json(projects);
     } catch (error) {
-      console.error("Error fetching projects:", error);
       res.status(500).json({ message: "Failed to fetch projects" });
     }
   });
@@ -29,7 +28,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors 
         });
       } else {
-        console.error("Error creating project:", error);
         res.status(500).json({ message: "Failed to create project" });
       }
     }
@@ -58,7 +56,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors 
         });
       } else {
-        console.error("Error updating project:", error);
         res.status(500).json({ message: "Failed to update project" });
       }
     }
@@ -80,7 +77,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       res.json({ message: "Project deleted successfully" });
     } catch (error) {
-      console.error("Error deleting project:", error);
       res.status(500).json({ message: "Failed to delete project" });
     }
   });
@@ -91,7 +87,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const services = await storage.getServices();
       res.json(services);
     } catch (error) {
-      console.error("Error fetching services:", error);
       res.status(500).json({ message: "Failed to fetch services" });
     }
   });
@@ -122,7 +117,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
           errors: error.errors 
         });
       } else {
-        console.error("Error submitting contact form:", error);
         res.status(500).json({ message: "Failed to submit contact form" });
       }
     }

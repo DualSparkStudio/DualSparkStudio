@@ -89,7 +89,7 @@ const Layout = ({ navigate }: LayoutProps) => {
     if (backgroundMusic && !isMuted) {
       // We need user interaction before playing audio
       const handleFirstInteraction = () => {
-        backgroundMusic.play().catch(e => console.error('Audio play failed:', e));
+        backgroundMusic.play().catch(() => {});
         document.removeEventListener('click', handleFirstInteraction);
       };
       document.addEventListener('click', handleFirstInteraction);

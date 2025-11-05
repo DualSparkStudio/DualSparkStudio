@@ -9,7 +9,7 @@ try {
   const compression = require('compression');
   app.use(compression());
 } catch (e) {
-  console.log('Compression middleware not available');
+  // Compression middleware not available
 }
 
 // Add caching headers
