@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Admin from '../pages/Admin';
 import ContactButtons from '../pages/ContactButtons';
+import Testing from '../pages/Testing';
 import Layout from './Layout';
 
 // Simple router component for handling different pages
@@ -30,6 +31,8 @@ const Router = () => {
         return <Admin />;
       case '/contact-only':
         return <ContactButtons />;
+      case '/testing':
+        return <Testing />;
       case '/':
       default:
         return <Layout navigate={navigate} />;
