@@ -32,7 +32,7 @@ const Router = () => {
       case '/contact-only':
         return <ContactButtons />;
       case '/testing':
-        return <Testing />;
+        return <Testing navigate={navigate} />;
       case '/':
       default:
         return <Layout navigate={navigate} />;
