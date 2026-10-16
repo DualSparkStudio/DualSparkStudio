@@ -1,0 +1,10 @@
+# DualSpark Studio - robots.txt
+User-agent: *
+Allow: /
+Disallow: /admin
+
+# Host
+Host: https://dualsparkstudio.com
+
+# Sitemaps
+Sitemap: https://dualsparkstudio.com/sitemap.xml

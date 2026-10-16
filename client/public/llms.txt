@@ -1,0 +1,43 @@
+# DualSpark Studio
+> Custom Web Development, Bespoke Software, and 3D Interactive Web Applications
+
+DualSpark Studio is a modern digital engineering and creative technology agency headquartered in Pune, India. We design and engineer high-performance web applications, interactive 3D digital experiences, and tailored business software with a strong focus on speed, user experience, and measurable business growth.
+
+## Core Services & Solutions
+
+### 1. Hospitality, Resort & Villa Website Development
+- Custom websites designed specifically for luxury resorts, boutique villas, vacation rentals, and hotels.
+- Direct booking engine integrations to maximize commission-free direct reservations.
+- Interactive room and amenity galleries, real-time availability calendars, and multi-currency secure payment processing.
+- Mobile-first, speed-optimized digital presence ensuring high conversion rates for international travelers.
+
+### 2. 3D Interactive Web Experiences
+- Immersive WebGL and Three.js development running natively in all modern web browsers.
+- 3D product configurators, virtual showrooms, spatial portfolio showcases, and interactive 3D visualizations.
+- Smooth GLSL shaders, camera animations, and high frame-rate rendering optimized for mobile and desktop devices.
+
+### 3. Custom Web & Cloud Software
+- Bespoke SaaS platforms, customer portals, inventory systems, and admin dashboards.
+- Full-stack engineering using React, TypeScript, Node.js, Express, and PostgreSQL.
+- RESTful & WebSocket API design, secure authentication (OAuth/JWT), and database architecture.
+
+### 4. Technical SEO & Performance Optimization
+- Core Web Vitals engineering (LCP, INP, CLS optimization).
+- Comprehensive Schema.org JSON-LD structured data and Answer Engine Optimization (AEO/GEO).
+- Mobile speed optimization, code-splitting, and asset delivery pipeline configuration.
+
+## Technologies Used
+- Frontend: React 18, TypeScript, Tailwind CSS, Vite
+- 3D & Creative Tech: Three.js, WebGL, React Three Fiber, GLSL Shaders, Framer Motion, GSAP
+- Backend & Data: Node.js, Express, PostgreSQL, Drizzle ORM
+- Deployment: Netlify, Serverless PostgreSQL
+
+## Contact & Inquiries
+- Official Website: https://dualsparkstudio.com/
+- Direct Contact Portal: https://dualsparkstudio.com/contact-only
+- Email: dualsparkstudio@gmail.com
+- Telephone: +91 9270269875 / +91 7057150584
+- Location: Pune, Maharashtra, India
+- LinkedIn: https://www.linkedin.com/in/dualspark-studio-a50757363
+- GitHub: https://github.com/dualsparkstudio
+- Instagram: https://www.instagram.com/dualsparkstudio

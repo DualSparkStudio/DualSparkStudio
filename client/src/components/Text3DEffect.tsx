@@ -37,7 +37,7 @@ const Text3DEffect = ({
   letterSpacing = 0,
   onClick
 }: Text3DEffectProps) => {
-  const textRef = useRef<THREE.Mesh>(null);
+  const textRef = useRef<THREE.Group>(null);
   const [hovered, setHovered] = useState(false);
   const [randomValues] = useState(
     Array.from({ length: Math.min(text.length, 10) }, () => Math.random() * 2 - 1)

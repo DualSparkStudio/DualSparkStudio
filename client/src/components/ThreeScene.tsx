@@ -285,7 +285,7 @@ const ThreeScene = () => {
       </mesh>
       
       {/* Simplified post-processing */}
-      <EffectComposer multisampling={0}> {/* Disabled multisampling */}
+      <EffectComposer multisampling={0}>
         <Bloom 
           luminanceThreshold={0.2}
           intensity={0.3}

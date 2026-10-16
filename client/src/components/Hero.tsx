@@ -146,6 +146,7 @@ const Hero = () => {
         </div>
         
         {/* Feature highlights */}
+        <h2 className="sr-only">Key Services & Highlights</h2>
         <motion.div 
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto"
           variants={{
@@ -204,7 +205,15 @@ const Hero = () => {
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 1.5 }}
         onClick={() => handleScrollToSection('projects')}
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll down to projects section"
         title="Scroll down"
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            handleScrollToSection('projects');
+          }
+        }}
       >
         <div className="w-8 h-12 rounded-full border-2 border-muted-foreground flex justify-center hover:border-primary transition-colors">
           <motion.div 

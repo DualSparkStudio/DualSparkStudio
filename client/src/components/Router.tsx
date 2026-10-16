@@ -1,8 +1,16 @@
-import { useEffect, useState } from 'react';
-import Admin from '../pages/Admin';
-import ContactButtons from '../pages/ContactButtons';
-import Testing from '../pages/Testing';
+import { lazy, Suspense, useEffect, useState } from 'react';
 import Layout from './Layout';
+
+// Lazy-load non-critical routes to keep the main homepage bundle lean
+const Admin = lazy(() => import('../pages/Admin'));
+const ContactButtons = lazy(() => import('../pages/ContactButtons'));
+const Testing = lazy(() => import('../pages/Testing'));
+
+const RouteLoader = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 // Simple router component for handling different pages
 const Router = () => {
@@ -28,11 +36,23 @@ const Router = () => {
   const renderRoute = () => {
     switch (currentPath) {
       case '/admin':
-        return <Admin />;
+        return (
+          <Suspense fallback={<RouteLoader />}>
+            <Admin />
+          </Suspense>
+        );
       case '/contact-only':
-        return <ContactButtons />;
+        return (
+          <Suspense fallback={<RouteLoader />}>
+            <ContactButtons />
+          </Suspense>
+        );
       case '/testing':
-        return <Testing navigate={navigate} />;
+        return (
+          <Suspense fallback={<RouteLoader />}>
+            <Testing navigate={navigate} />
+          </Suspense>
+        );
       case '/':
       default:
         return <Layout navigate={navigate} />;

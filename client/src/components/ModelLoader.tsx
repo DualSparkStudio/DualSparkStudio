@@ -51,12 +51,8 @@ const ModelLoader = ({
   const [hovered, setHovered] = useState(false);
   const modelRef = useRef<THREE.Group>(null);
   
-  // Load the model with error handling
-  const { scene, animations, materials } = useGLTF(modelPath, undefined, 
-    (e) => {
-      setError(`Failed to load model: ${e.message}`);
-      toast.error('Failed to load 3D model');
-    });
+  // Load the model with draco support
+  const { scene, animations, materials } = useGLTF(modelPath, true);
   
   // Set up animations if available
   const { actions, mixer } = useAnimations(animations, modelRef);

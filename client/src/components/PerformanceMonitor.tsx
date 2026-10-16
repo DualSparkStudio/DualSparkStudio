@@ -11,14 +11,15 @@ export const PerformanceMonitor = () => {
     initPerformanceOptimizations();
 
     // Monitor Core Web Vitals
-    if ('web-vital' in window) {
-      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-        getCLS(() => {});
-        getFID(() => {});
-        getFCP(() => {});
-        getLCP(() => {});
-        getTTFB(() => {});
-      });
+    if (typeof window !== 'undefined' && 'web-vital' in window) {
+      // @ts-ignore
+      import('web-vitals').then(({ onCLS, onFCP, onLCP, onINP, onTTFB }: any) => {
+        onCLS?.(() => {});
+        onFCP?.(() => {});
+        onLCP?.(() => {});
+        onINP?.(() => {});
+        onTTFB?.(() => {});
+      }).catch(() => {});
     }
 
     // Monitor bundle loading performance

@@ -29,23 +29,39 @@ export default defineConfig({
     // Performance optimizations
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split vendor libraries
-          'react-vendor': ['react', 'react-dom'],
-          'three-vendor': ['three', '@react-three/fiber', '@react-three/drei'],
-          'ui-vendor': ['@radix-ui/react-accordion', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
-          'animation-vendor': ['framer-motion', 'gsap'],
-          'utils-vendor': ['clsx', 'tailwind-merge', 'zod'],
+        manualChunks(id) {
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom') || id.includes('node_modules/scheduler') || id.includes('node_modules/zustand') || id.includes('node_modules/@tanstack')) {
+            return 'react-vendor';
+          }
+          if (id.includes('node_modules/three') || id.includes('node_modules/@react-three') || id.includes('node_modules/postprocessing') || id.includes('node_modules/three-stdlib')) {
+            return 'three-vendor';
+          }
+          if (id.includes('node_modules/framer-motion') || id.includes('node_modules/gsap')) {
+            return 'animation-vendor';
+          }
+          if (id.includes('node_modules/@radix-ui')) {
+            return 'ui-vendor';
+          }
         },
+      },
+    },
+    // Configure modulepreload to defer heavy 3D vendors until lazy-loaded
+    modulePreload: {
+      resolveDependencies: (filename, deps, { hostType }) => {
+        if (hostType === 'html') {
+          // Exclude three-vendor from initial HTML modulepreload
+          return deps.filter(dep => !dep.includes('three-vendor'));
+        }
+        return deps;
       },
     },
     // Enable minification and compression
     minify: 'esbuild', // Use esbuild instead of terser for better compatibility
-    esbuild: {
-      drop: ['console', 'debugger'],
-    },
     // Increase chunk size warning limit
     chunkSizeWarningLimit: 1000,
+  },
+  esbuild: {
+    drop: ['console', 'debugger'],
   },
   // Add support for large models and audio files
   assetsInclude: ["**/*.gltf", "**/*.glb", "**/*.mp3", "**/*.ogg", "**/*.wav"],

@@ -6,12 +6,14 @@ interface ShootingStarProps {
   count?: number;
   speed?: number;
   frequency?: number;
+  area?: number;
 }
 
 const ShootingStars = ({ 
   count = 20, 
   speed = 30, 
-  frequency = 0.2 
+  frequency = 0.2,
+  area = 100
 }: ShootingStarProps) => {
   const groupRef = useRef<THREE.Group>(null);
   const starsRef = useRef<THREE.Mesh[]>([]);

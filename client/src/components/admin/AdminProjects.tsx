@@ -92,7 +92,7 @@ const AdminProjects = ({ projects, onAddProject, onUpdateProject, onDeleteProjec
       category: project.category,
       link: project.link || '',
       githubLink: project.githubLink || '',
-      featured: project.featured,
+      featured: project.featured ?? false,
     });
   };
 

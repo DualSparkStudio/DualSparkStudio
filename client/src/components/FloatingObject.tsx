@@ -65,11 +65,27 @@ const FloatingObjectImplementation = ({
   );
 };
 
-// Wrapper component that provides the Canvas context
+import { useState, useEffect } from 'react';
+
+// Wrapper component that provides the Canvas context (desktop only to prevent multi-context stalls on mobile)
 const FloatingObject = (props: FloatingObjectProps) => {
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 1024);
+  }, []);
+
+  if (!isDesktop) {
+    return null;
+  }
+
   return (
     <div className="w-24 h-24">
-      <Canvas camera={{ position: [0, 0, 5] }}>
+      <Canvas 
+        camera={{ position: [0, 0, 5] }}
+        gl={{ powerPreference: 'low-power', antialias: false }}
+        frameloop="demand"
+      >
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <FloatingObjectImplementation {...props} />

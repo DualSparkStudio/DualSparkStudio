@@ -622,7 +622,7 @@ export default function Testing({ navigate }: TestingProps) {
               <div>
                 <div className="flex items-center gap-2">
                   <span className="font-semibold text-foreground text-sm md:text-base">Dr. Elena Vance & Yash Sharma</span>
-                  <CheckCircle2 className="w-4 h-4 text-primary" title="Verified Researchers" />
+                  <span title="Verified Researchers"><CheckCircle2 className="w-4 h-4 text-primary" /></span>
                 </div>
                 <p className="text-xs text-muted-foreground">
                   Chief Graphics Architect & Systems Lead, DualSpark Studio Lab

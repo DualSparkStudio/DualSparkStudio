@@ -18,7 +18,7 @@ const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const headerRef = useRef(null);
 
   // Filter projects based on active category
@@ -148,10 +148,14 @@ const Projects = () => {
           {filteredProjects.map((project, index) => (
             <motion.div key={project.id} variants={itemVariants}>
               <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow group">
-                <div className="relative overflow-hidden h-48">
+                <div className="relative overflow-hidden h-48 bg-muted/30">
                   <img 
                     src={project.imageUrl} 
-                    alt={project.title} 
+                    alt={`${project.title} - ${project.description}`} 
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="400"
                     className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-start p-4">
@@ -161,6 +165,7 @@ const Projects = () => {
                           href={project.link} 
                           target="_blank" 
                           rel="noopener noreferrer"
+                          aria-label={`View live website for ${project.title}`}
                           className="text-white bg-primary/90 hover:bg-primary p-2 rounded-full transition-colors"
                         >
                           <FiExternalLink size={16} />
@@ -171,6 +176,7 @@ const Projects = () => {
                           href={project.githubLink} 
                           target="_blank" 
                           rel="noopener noreferrer"
+                          aria-label={`View GitHub repository for ${project.title}`}
                           className="text-white bg-foreground/80 hover:bg-foreground p-2 rounded-full transition-colors"
                         >
                           <FiGithub size={16} />

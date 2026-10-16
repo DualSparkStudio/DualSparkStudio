@@ -1,15 +1,17 @@
 import useSmoothScroll from '@/hooks/useSmoothScroll';
 import { useAudio } from '@/lib/stores/useAudio';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState, lazy, Suspense } from 'react';
 import { FiArrowUp } from 'react-icons/fi';
 import { toast } from 'sonner';
-import Contact from './Contact';
 import Hero from './Hero';
-import PageTransition from './PageTransition';
-import Projects from './Projects';
-import Services from './Services';
 import { Button } from './ui/button';
+import { SOCIAL_LINKS } from '@/lib/constants';
+
+const PageTransition = lazy(() => import('./PageTransition'));
+const Projects = lazy(() => import('./Projects'));
+const Services = lazy(() => import('./Services'));
+const Contact = lazy(() => import('./Contact'));
 
 interface LayoutProps {
   navigate?: (path: string) => void;
@@ -151,6 +153,7 @@ const Layout = ({ navigate }: LayoutProps) => {
       {/* Scroll to Top Button */}
       <motion.button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+        aria-label="Scroll to top of page"
         className={`fixed bottom-8 right-8 z-50 p-3 rounded-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-colors ${
           showScrollTop ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
@@ -188,17 +191,23 @@ const Layout = ({ navigate }: LayoutProps) => {
       </AnimatePresence>
 
       {/* Page Transition Effect */}
-      <PageTransition 
-        isVisible={pageTransition.isVisible} 
-        direction={pageTransition.direction as 'up' | 'down' | 'left' | 'right'}
-      />
+      {pageTransition.isVisible && (
+        <Suspense fallback={null}>
+          <PageTransition 
+            isVisible={pageTransition.isVisible} 
+            direction={pageTransition.direction as 'up' | 'down' | 'left' | 'right'}
+          />
+        </Suspense>
+      )}
 
       {/* Main Content */}
       <main className="relative z-10">
         <Hero />
-        <Projects />
-        <Services />
-        <Contact />
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <Projects />
+          <Services />
+          <Contact />
+        </Suspense>
       </main>
 
       {/* Footer */}
@@ -211,9 +220,10 @@ const Layout = ({ navigate }: LayoutProps) => {
             <Button 
               variant="ghost" 
               size="sm"
+              aria-label="Visit DualSpark Studio LinkedIn profile"
               onClick={() => {
                 playHit();
-                window.open('https://www.linkedin.com/in/dualspark-studio-a50757363', '_blank');
+                window.open(SOCIAL_LINKS.linkedin, '_blank');
               }}
               className="text-muted-foreground hover:text-primary transition-colors duration-200 btn-hover-effect"
             >
@@ -222,9 +232,10 @@ const Layout = ({ navigate }: LayoutProps) => {
             <Button 
               variant="ghost" 
               size="sm"
+              aria-label="Visit DualSpark Studio GitHub profile"
               onClick={() => {
                 playHit();
-                window.open('https://github.com/dualsparkstudio', '_blank');
+                window.open(SOCIAL_LINKS.github, '_blank');
               }}
               className="text-muted-foreground hover:text-primary transition-colors duration-200 btn-hover-effect"
             >
@@ -233,9 +244,10 @@ const Layout = ({ navigate }: LayoutProps) => {
             <Button 
               variant="ghost" 
               size="sm"
+              aria-label="Visit DualSpark Studio Instagram profile"
               onClick={() => {
                 playHit();
-                window.open('https://www.linkedin.com/in/dualspark-studio-a50757363', '_blank');
+                window.open(SOCIAL_LINKS.instagram, '_blank');
               }}
               className="text-muted-foreground hover:text-primary transition-colors duration-200 btn-hover-effect"
             >

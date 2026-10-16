@@ -56,8 +56,15 @@ const serviceItems = [
   },
 ];
 
+interface Service3DItemProps {
+  item: any;
+  onClick: (id: number) => void;
+  active: boolean;
+  index: number;
+}
+
 // 3D Service Item component - optimized
-const Service3DItem = ({ item, onClick, active, index }) => {
+const Service3DItem = ({ item, onClick, active, index }: Service3DItemProps) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
   
@@ -143,7 +150,7 @@ const Service3DItem = ({ item, onClick, active, index }) => {
 };
 
 // Scene component that manages all 3D elements - optimized
-const ServicesScene = ({ onServiceSelect }) => {
+const ServicesScene = ({ onServiceSelect }: { onServiceSelect: (id: number) => void }) => {
   const [activeService, setActiveService] = useState<number | null>(null);
   const { camera } = useThree();
   const groupRef = useRef<THREE.Group>(null);
@@ -221,7 +228,7 @@ const ServicesScene = ({ onServiceSelect }) => {
 // Main component that renders the 3D services section - optimized
 const Services3D = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const canvasRef = useRef<HTMLDivElement>(null);
   const [selectedService, setSelectedService] = useState<number>(1);
   const { playHit } = useAudio();
   

@@ -22,7 +22,7 @@ const ProjectsPage = ({ projects }: ProjectsPageProps) => {
   const [sortBy, setSortBy] = useState<'newest' | 'featured' | 'alphabetical'>('featured');
   const controls = useAnimation();
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.1 });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const headerRef = useRef(null);
 
   // Get unique categories from projects
