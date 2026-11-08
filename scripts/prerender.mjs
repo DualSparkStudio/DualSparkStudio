@@ -11,6 +11,9 @@ const DIST_DIR = path.resolve(__dirname, '../dist');
 // Public routes from client/src/components/Router.tsx (internal/admin excluded)
 const PUBLIC_ROUTES = [
   '/',
+  '/about',
+  '/work',
+  '/resort-villa-websites',
   '/contact-only',
 ];
 
@@ -30,7 +33,7 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
 };
 
-function createStaticServer() {
+function createStaticServer(fallbackShellHtml = null) {
   return http.createServer((req, res) => {
     try {
       const parsedUrl = new URL(req.url, 'http://localhost');
@@ -43,8 +46,13 @@ function createStaticServer() {
         filePath = path.join(filePath, 'index.html');
       }
 
-      // If file doesn't exist, SPA fallback to dist/index.html
+      // If file doesn't exist, SPA fallback
       if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+        if (fallbackShellHtml) {
+          res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+          res.end(fallbackShellHtml);
+          return;
+        }
         filePath = path.join(DIST_DIR, 'index.html');
       }
 
@@ -91,15 +99,9 @@ ${urlsXml}
 </urlset>
 `;
 
-  // Write to dist/sitemap.xml
+  // Write sitemap only to dist/sitemap.xml
   const distSitemap = path.join(DIST_DIR, 'sitemap.xml');
   fs.writeFileSync(distSitemap, sitemapContent, 'utf8');
-
-  // Also update client/public/sitemap.xml so repo source stays in sync
-  const clientPublicSitemap = path.resolve(__dirname, '../client/public/sitemap.xml');
-  if (fs.existsSync(path.dirname(clientPublicSitemap))) {
-    fs.writeFileSync(clientPublicSitemap, sitemapContent, 'utf8');
-  }
 
   console.log(`\n🗺️ Generated sitemap.xml for ${routes.length} public routes with lastmod: ${today}`);
   routes.forEach((r) => console.log(`   ✔ ${r === '/' ? `${baseUrl}/` : `${baseUrl}${r}`}`));
@@ -112,7 +114,8 @@ async function prerender() {
     throw new Error(`Build directory does not exist: ${DIST_DIR}. Run vite build first.`);
   }
 
-  const server = createStaticServer();
+  const originalShell = fs.readFileSync(path.join(DIST_DIR, 'index.html'), 'utf8');
+  const server = createStaticServer(originalShell);
 
   await new Promise((resolve, reject) => {
     server.listen(0, '127.0.0.1', () => resolve());
@@ -186,6 +189,10 @@ async function prerender() {
         'link[rel="canonical"]',
         (el) => el.getAttribute('href') || ''
       ).catch(() => '');
+      const ogUrl = await page.$eval(
+        'meta[property="og:url"]',
+        (el) => el.getAttribute('content') || ''
+      ).catch(() => '');
 
       const fullHtml = await page.content();
 
@@ -201,6 +208,15 @@ async function prerender() {
       }
       if (!canonical || canonical.trim().length === 0) {
         throw new Error(`Prerender Error: Missing canonical URL on route "${route}"`);
+      }
+      const expectedCanonical = route === '/'
+        ? 'https://dualsparkstudio.com/'
+        : `https://dualsparkstudio.com${route}`;
+      if (canonical !== expectedCanonical) {
+        throw new Error(`Prerender Error: Expected canonical "${expectedCanonical}" on route "${route}", got "${canonical}"`);
+      }
+      if (ogUrl !== expectedCanonical) {
+        throw new Error(`Prerender Error: Expected og:url "${expectedCanonical}" on route "${route}", got "${ogUrl}"`);
       }
       if (fullHtml.includes('<div id="root"></div>')) {
         throw new Error(`Prerender Error: Empty <div id="root"></div> shell rendered on route "${route}"`);

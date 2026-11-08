@@ -18,7 +18,10 @@
 | **AI Crawlers & LLM Directives (AEO / GEO)** | `client/public/llms.txt`<br>`client/public/robots.txt` | `client/index.html` |
 | **Routing & URL Handling (Unknown routes, `/admin`, etc.)** | `client/src/components/Router.tsx` | `client/public/_redirects`<br>`client/src/pages/` |
 | **Netlify Deployment, SPA Rewrites & Redirects** | `client/public/_redirects` | `client/src/components/Router.tsx` |
-| **Pre-rendering & Static HTML Generation (Playwright)** | `scripts/prerender.mjs` | `package.json` (`build` script)<br>`client/src/components/Router.tsx` |
+| **Pre-rendering & Static HTML Generation (Playwright)** | `scripts/prerender.mjs` | `package.json` (`build` script)<br>`client/src/components/Router.tsx`<br>`dist/sitemap.xml` |
+| **About Page (`/about`)** | `client/src/pages/About.tsx` | `client/src/components/Router.tsx`<br>`scripts/prerender.mjs` |
+| **Work Page (`/work`)** | `client/src/pages/Work.tsx` | `client/src/components/Router.tsx`<br>`scripts/prerender.mjs` |
+| **Resort & Villa Websites Page (`/resort-villa-websites`)** | `client/src/pages/ResortVillaWebsites.tsx` | `client/src/components/Router.tsx`<br>`scripts/prerender.mjs` |
 | **3D Background, Shaders, WebGL Particles** | `client/src/components/ThreeBackground.tsx`<br>`client/src/components/ShootingStars.tsx` | `client/src/components/Hero.tsx`<br>`client/src/components/FloatingObject.tsx` |
 | **Audio, Sound Effects & Background Music** | `client/src/lib/stores/useAudio.tsx` | `client/src/components/Layout.tsx` |
 | **Styling, Color Themes, Fonts & Animations** | `client/src/index.css`<br>`tailwind.config.ts` | `client/src/lib/stores/useTheme.ts` |
@@ -65,7 +68,7 @@ graph TD
 - [`tsconfig.json`](file:///c:/work/DualSparkStudio/tsconfig.json): TypeScript configuration and path aliases (`@/*` -> `client/src/*`, `@shared/*` -> `shared/*`).
 - [`vite.config.ts`](file:///c:/work/DualSparkStudio/vite.config.ts): Vite build configuration, asset chunking, plugins, and path resolution.
 - [`tailwind.config.ts`](file:///c:/work/DualSparkStudio/tailwind.config.ts): Tailwind design tokens, typography, animations, and color scheme.
-- [`scripts/prerender.mjs`](file:///c:/work/DualSparkStudio/scripts/prerender.mjs): Playwright build-time pre-renderer. Spawns headless Chromium post-build, renders public routes (`/`, `/contact-only`), verifies metadata & headings, and outputs pre-rendered HTML to `dist/index.html` and `dist/contact-only/index.html`.
+- [`scripts/prerender.mjs`](file:///c:/work/DualSparkStudio/scripts/prerender.mjs): Playwright build-time pre-renderer. Spawns headless Chromium post-build, renders public routes (`/`, `/about`, `/work`, `/resort-villa-websites`, `/contact-only`), verifies metadata, canonical, og:url, & headings, and outputs pre-rendered HTML to `dist/index.html` and `dist/<route>/index.html`. Generates `dist/sitemap.xml` dynamically without dirtying `client/public/sitemap.xml`.
 - [`PROJECT_INDEX.md`](file:///c:/work/DualSparkStudio/PROJECT_INDEX.md): This file — master index and lookup directory.
 
 ---
@@ -75,7 +78,7 @@ graph TD
   - Primary HTML document mounted by Vite.
   - SEO Meta tags (Title, Description, Keywords, Robots, Canonical).
   - OpenGraph and Twitter card metadata.
-  - Schema.org structured data: `ProfessionalService` JSON-LD (Name, locality, region, country, phone, email, sameAs).
+  - Schema.org structured data: `ProfessionalService` JSON-LD (`founder` array with Yash Vilas Karanjule and Sahil Ramchandra Dhanawade, foundingDate 2025-01, locality Pune, region Maharashtra, country IN, phone, email, sameAs).
 
 ---
 
@@ -101,7 +104,11 @@ graph TD
 #### Page Components & Layouts
 - [`client/src/components/Router.tsx`](file:///c:/work/DualSparkStudio/client/src/components/Router.tsx):
   - Client-side SPA routing based on `window.location.pathname`.
-  - Routes: `/admin` (Admin), `/contact-only` (ContactButtons), `default:` (`<Layout />`).
+  - Routes: `/admin` (Admin), `/contact-only` (ContactButtons), `/about` (About), `/work` (Work), `/resort-villa-websites` (ResortVillaWebsites), `default:` (`<Layout />`).
+- [`client/src/components/PageHeader.tsx`](file:///c:/work/DualSparkStudio/client/src/components/PageHeader.tsx):
+  - Shared subpage navigation bar with responsive mobile drawer, brand logo linking to `/`, active link indicators, and CTA button.
+- [`client/src/components/PageFooter.tsx`](file:///c:/work/DualSparkStudio/client/src/components/PageFooter.tsx):
+  - Shared subpage footer with studio summary, quick navigation links, contact points (Pune, Maharashtra, India), and social links.
 - [`client/src/components/Layout.tsx`](file:///c:/work/DualSparkStudio/client/src/components/Layout.tsx):
   - Main shell containing header, desktop/mobile navigation, sound mute toggle, and back-to-top button.
   - Dynamically hides `'projects'` from the navigation bar when `projects.length === 0`.
@@ -146,6 +153,9 @@ graph TD
 - Standard Accessible Shadcn / Radix UI primitives: `accordion`, `button`, `card`, `dialog`, `input`, `textarea`, `tabs`, `sonner`, `sheet`, etc.
 
 #### Pages (`client/src/pages/`)
+- [`client/src/pages/About.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/About.tsx): Dedicated About page (`/about`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, founding story (partnership by Yash Vilas Karanjule and Sahil Ramchandra Dhanawade in Jan 2025 in Pune), and core pillars.
+- [`client/src/pages/Work.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/Work.tsx): Dedicated Work & Portfolio page (`/work`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, engineering specializations, and case study consultations.
+- [`client/src/pages/ResortVillaWebsites.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/ResortVillaWebsites.tsx): Dedicated Resort & Villa Booking Websites page (`/resort-villa-websites`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, commission-free direct booking features, and real-time availability.
 - [`client/src/pages/Admin.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/Admin.tsx): Admin authentication and dashboard gateway.
 - [`client/src/pages/AdminDashboard.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/AdminDashboard.tsx): CMS panel for live project management.
 - [`client/src/pages/ContactButtons.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/ContactButtons.tsx): Minimal mobile contact tree (`/contact-only`).
