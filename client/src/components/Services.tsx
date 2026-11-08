@@ -182,7 +182,7 @@ const Services = () => {
                   Do you build custom websites and direct booking systems for resorts, villas, and hotels?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  Yes. We engineer bespoke hospitality websites with commission-free direct booking engines, interactive room and villa showcases, real-time availability calendars, and secure multi-currency payment gateway integrations (Stripe, Razorpay, etc.) designed to maximize guest conversions.
+                  Yes. We engineer bespoke hospitality websites with commission-free direct booking engines, interactive room and villa showcases, real-time availability calendars, and secure multi-currency payment gateway integrations (Stripe, Razorpay, etc.).
                 </AccordionContent>
               </AccordionItem>
 
@@ -191,7 +191,7 @@ const Services = () => {
                   How do 3D interactive elements and WebGL benefit my website?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  Interactive 3D configurators, virtual spaces, and real-time WebGL models dramatically increase visitor dwell time, engagement, and customer trust. They let clients interact with products or spaces directly in their browser without downloading external apps.
+                  Interactive 3D configurators, virtual spaces, and real-time WebGL models let clients interact with products or spaces directly in their browser without downloading external apps.
                 </AccordionContent>
               </AccordionItem>
 
@@ -209,7 +209,7 @@ const Services = () => {
                   How do you ensure fast mobile loading times while using 3D graphics?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  We use progressive enhancement: critical DOM and above-the-fold content render instantly, while heavy 3D canvases, shaders, and animations are code-split, deferred, and dynamically scaled down on mobile devices (e.g., lower particle counts and disabled bloom post-processing) to guarantee green Core Web Vitals.
+                  We use progressive enhancement: critical DOM and above-the-fold content render instantly, while heavy 3D canvases, shaders, and animations are code-split, deferred, and dynamically scaled down on mobile devices (e.g., lower particle counts and disabled bloom post-processing).
                 </AccordionContent>
               </AccordionItem>
 
@@ -218,7 +218,7 @@ const Services = () => {
                   Where is DualSpark Studio located and what markets do you serve?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  DualSpark Studio is based in Pune, Maharashtra, India, serving global clients across North America, Europe, Asia, and India seeking premium digital engineering and creative technology.
+                  DualSpark Studio is based in Pune, India, and serves clients everywhere.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -237,7 +237,7 @@ const Services = () => {
                     "name": "Do you build custom websites and direct booking systems for resorts, villas, and hotels?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Yes. We engineer bespoke hospitality websites with commission-free direct booking engines, interactive room and villa showcases, real-time availability calendars, and secure multi-currency payment gateway integrations designed to maximize guest conversions."
+                      "text": "Yes. We engineer bespoke hospitality websites with commission-free direct booking engines, interactive room and villa showcases, real-time availability calendars, and secure multi-currency payment gateway integrations."
                     }
                   },
                   {
@@ -245,7 +245,7 @@ const Services = () => {
                     "name": "How do 3D interactive elements and WebGL benefit my website?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Interactive 3D configurators, virtual spaces, and real-time WebGL models dramatically increase visitor dwell time, engagement, and customer trust by letting clients interact with products or spaces directly in their browser."
+                      "text": "Interactive 3D configurators, virtual spaces, and real-time WebGL models let clients interact with products or spaces directly in their browser."
                     }
                   },
                   {
@@ -269,7 +269,7 @@ const Services = () => {
                     "name": "Where is DualSpark Studio located and what markets do you serve?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "DualSpark Studio is based in Pune, Maharashtra, India, serving global clients across North America, Europe, Asia, and India seeking premium digital engineering and creative technology."
+                      "text": "DualSpark Studio is based in Pune, India, and serves clients everywhere."
                     }
                   }
                 ]

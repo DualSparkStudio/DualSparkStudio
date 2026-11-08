@@ -23,7 +23,6 @@ DualSpark Studio is a modern digital engineering and creative technology agency 
 
 ### 4. Technical SEO & Performance Optimization
 - Core Web Vitals engineering (LCP, INP, CLS optimization).
-- Comprehensive Schema.org JSON-LD structured data and Answer Engine Optimization (AEO/GEO).
 - Mobile speed optimization, code-splitting, and asset delivery pipeline configuration.
 
 ## Technologies Used

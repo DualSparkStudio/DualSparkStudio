@@ -2,29 +2,19 @@ import { projects } from '@/lib/data';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 // Register GSAP plugins
 gsap.registerPlugin(ScrollTrigger);
-import { FiChevronRight, FiExternalLink, FiGithub } from 'react-icons/fi';
+import { FiExternalLink } from 'react-icons/fi';
 import FloatingObject from './FloatingObject';
-import { Button } from './ui/button';
 import { Card, CardContent } from './ui/card';
 
-// Project categories
-const categories = ['All', 'Web', '3D', 'Mobile', 'E-commerce'];
-
 const Projects = () => {
-  const [activeCategory, setActiveCategory] = useState('All');
   const controls = useAnimation();
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
   const headerRef = useRef(null);
-
-  // Filter projects based on active category
-  const filteredProjects = activeCategory === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === activeCategory);
 
   useEffect(() => {
     if (isInView) {
@@ -46,10 +36,6 @@ const Projects = () => {
     }
   }, []);
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-  };
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -68,6 +54,10 @@ const Projects = () => {
       transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1.0] },
     },
   };
+
+  if (projects.length === 0) {
+    return null;
+  }
 
   return (
     <section id="projects" className="relative py-24 overflow-hidden bg-background/80 backdrop-blur-md">
@@ -116,28 +106,6 @@ const Projects = () => {
           </motion.p>
         </div>
         
-        {/* Category Filter */}
-        <motion.div 
-          className="flex flex-wrap justify-center gap-2 mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={controls}
-          variants={{
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.3 } },
-          }}
-        >
-          {categories.map(category => (
-            <Button
-              key={category}
-              variant={activeCategory === category ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => handleCategoryChange(category)}
-              className="min-w-[80px]"
-            >
-              {category}
-            </Button>
-          ))}
-        </motion.div>
-        
         {/* Projects Grid */}
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
@@ -145,7 +113,7 @@ const Projects = () => {
           initial="hidden"
           animate={controls}
         >
-          {filteredProjects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div key={project.id} variants={itemVariants}>
               <Card className="overflow-hidden h-full hover:shadow-lg transition-shadow group">
                 <div className="relative overflow-hidden h-48 bg-muted/30">
@@ -169,17 +137,6 @@ const Projects = () => {
                           className="text-white bg-primary/90 hover:bg-primary p-2 rounded-full transition-colors"
                         >
                           <FiExternalLink size={16} />
-                        </a>
-                      )}
-                      {project.githubLink && (
-                        <a 
-                          href={project.githubLink} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          aria-label={`View GitHub repository for ${project.title}`}
-                          className="text-white bg-foreground/80 hover:bg-foreground p-2 rounded-full transition-colors"
-                        >
-                          <FiGithub size={16} />
                         </a>
                       )}
                     </div>
@@ -207,22 +164,6 @@ const Projects = () => {
               </Card>
             </motion.div>
           ))}
-        </motion.div>
-        
-        {/* View More Button */}
-        <motion.div 
-          className="text-center mt-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={controls}
-          variants={{
-            visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.6 } },
-          }}
-        >
-          <Button variant="outline" size="lg" className="group">
-            <a href="https://dualsparkstudio.github.io/showcase/" target="_blank" rel="noopener noreferrer">
-            View All Projects</a>
-            <FiChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </Button>
         </motion.div>
       </div>
     </section>

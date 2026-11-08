@@ -7,6 +7,7 @@ import { toast } from 'sonner';
 import Hero from './Hero';
 import { Button } from './ui/button';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { projects } from '@/lib/data';
 
 const PageTransition = lazy(() => import('./PageTransition'));
 const Projects = lazy(() => import('./Projects'));
@@ -124,7 +125,7 @@ const Layout = ({ navigate }: LayoutProps) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-4">
-            {['home', 'projects', 'services', 'contact'].map((section) => (
+            {['home', ...(projects.length > 0 ? ['projects'] : []), 'services', 'contact'].map((section) => (
               <Button
                 key={section}
                 onClick={() => {
@@ -174,7 +175,7 @@ const Layout = ({ navigate }: LayoutProps) => {
             className="fixed inset-0 z-40 mt-16 bg-background/95 backdrop-blur-sm"
           >
             <div className="container mx-auto p-6 flex flex-col items-center space-y-6 pt-10">
-              {['hero', 'projects', 'services', 'contact'].map((section) => (
+              {['hero', ...(projects.length > 0 ? ['projects'] : []), 'services', 'contact'].map((section) => (
                 <Button
                   key={section}
                   onClick={() => scrollToSectionWithTransition(section)}
@@ -204,7 +205,7 @@ const Layout = ({ navigate }: LayoutProps) => {
       <main className="relative z-10">
         <Hero />
         <Suspense fallback={<div className="min-h-[400px]" />}>
-          <Projects />
+          {projects.length > 0 && <Projects />}
           <Services />
           <Contact />
         </Suspense>

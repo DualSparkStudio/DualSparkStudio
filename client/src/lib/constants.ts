@@ -52,7 +52,6 @@ export const CONTACT_INFO = {
     street: 'Pune',
     city: 'Pune',
     state: 'Maharashtra',
-    zip: '412210',
     country: 'India'
   }
 };

@@ -4,7 +4,6 @@ import Layout from './Layout';
 // Lazy-load non-critical routes to keep the main homepage bundle lean
 const Admin = lazy(() => import('../pages/Admin'));
 const ContactButtons = lazy(() => import('../pages/ContactButtons'));
-const Testing = lazy(() => import('../pages/Testing'));
 
 const RouteLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
@@ -45,12 +44,6 @@ const Router = () => {
         return (
           <Suspense fallback={<RouteLoader />}>
             <ContactButtons />
-          </Suspense>
-        );
-      case '/testing':
-        return (
-          <Suspense fallback={<RouteLoader />}>
-            <Testing navigate={navigate} />
           </Suspense>
         );
       case '/':

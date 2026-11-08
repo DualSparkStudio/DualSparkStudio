@@ -185,9 +185,7 @@ const Contact = () => {
                   <div>
                     <p className="text-sm text-muted-foreground">Address</p>
                     <address className="not-italic text-foreground">
-                      {CONTACT_INFO.address.street}<br />
-                      {CONTACT_INFO.address.city}, {CONTACT_INFO.address.state} {CONTACT_INFO.address.zip}<br />
-                      {CONTACT_INFO.address.country}
+                      {CONTACT_INFO.address.city}, {CONTACT_INFO.address.state}, {CONTACT_INFO.address.country}
                     </address>
                   </div>
                 </div>
