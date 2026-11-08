@@ -273,7 +273,7 @@ const Contact = () => {
                       type="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="john@example.com"
+                      placeholder="Enter your email"
                       required
                       className="w-full bg-background/50"
                       onClick={() => playHit()}

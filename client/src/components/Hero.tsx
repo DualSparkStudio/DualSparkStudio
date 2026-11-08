@@ -80,6 +80,10 @@ const Hero = () => {
           Meets <span className="text-accent">Design</span>
         </h1>
         
+        <p className="max-w-2xl mx-auto text-lg md:text-xl text-foreground/90 font-medium mb-6">
+          DualSpark Studio is a Pune-based web and software development studio. We have the most experience building resort and villa booking websites.
+        </p>
+        
         <motion.div
           variants={{
             hidden: { opacity: 0, y: 30 },

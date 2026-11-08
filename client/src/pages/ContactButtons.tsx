@@ -1,12 +1,47 @@
 import { CONTACT_INFO } from '@/lib/constants';
 import { FiPhone, FiMail, FiGlobe, FiMessageCircle, FiCheck } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 
 const ContactButtons = () => {
   const [emailCopied, setEmailCopied] = useState(false);
   const [logoError, setLogoError] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Contact DualSpark Studio | Direct Channels';
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute(
+        'content',
+        'Direct communication channels for DualSpark Studio. Reach out via WhatsApp, phone, email, or our website for bespoke software and web development.'
+      );
+    }
+
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', 'https://dualsparkstudio.com/contact-only');
+    }
+
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    if (ogTitle) {
+      ogTitle.setAttribute('content', 'Contact DualSpark Studio | Direct Channels');
+    }
+
+    const ogDesc = document.querySelector('meta[property="og:description"]');
+    if (ogDesc) {
+      ogDesc.setAttribute(
+        'content',
+        'Direct communication channels for DualSpark Studio. Reach out via WhatsApp, phone, email, or our website for bespoke software and web development.'
+      );
+    }
+
+    const ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      ogUrl.setAttribute('content', 'https://dualsparkstudio.com/contact-only');
+    }
+  }, []);
 
   // Extract phone numbers (remove spaces and + for tel/whatsapp links)
   const phoneNumbers = CONTACT_INFO.phone.split(' / ').map(num => 
@@ -101,6 +136,16 @@ const ContactButtons = () => {
             </div>
           )}
         </motion.div>
+
+        {/* Heading */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-foreground tracking-tight">
+            Connect with <span className="text-primary">DualSpark</span> Studio
+          </h1>
+          <p className="text-sm text-muted-foreground mt-2 max-w-sm mx-auto">
+            Direct communication channels for WhatsApp, phone calls, and project inquiries.
+          </p>
+        </div>
 
         <div className="max-w-md mx-auto space-y-8">
           {/* Call */}

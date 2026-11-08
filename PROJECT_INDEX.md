@@ -1,7 +1,8 @@
 # DualSpark Studio — Project Index & Architecture Map
 
 > **AI AGENT / DEVELOPER DIRECTIVE:**
-> When responding to any prompt, bug report, or feature request on this project, **consult this index FIRST** before exploring files or running broad searches. Use the **Lookup Intent Matrix** below to jump directly to the target file and line.
+> 1. **CONSULT FIRST:** When responding to any prompt, bug report, or feature request on this project, **consult this index FIRST** before exploring files or running broad searches. Use the **Lookup Intent Matrix** below to jump directly to the target file and line.
+> 2. **AUTO-UPDATE OBLIGATION:** Whenever any file, component, route, schema, dependency, or content is created, modified, renamed, or deleted in the project, **update this index immediately** as part of the task to reflect the new state so it remains 100% current.
 
 ---
 
@@ -17,6 +18,7 @@
 | **AI Crawlers & LLM Directives (AEO / GEO)** | `client/public/llms.txt`<br>`client/public/robots.txt` | `client/index.html` |
 | **Routing & URL Handling (Unknown routes, `/admin`, etc.)** | `client/src/components/Router.tsx` | `client/public/_redirects`<br>`client/src/pages/` |
 | **Netlify Deployment, SPA Rewrites & Redirects** | `client/public/_redirects` | `client/src/components/Router.tsx` |
+| **Pre-rendering & Static HTML Generation (Playwright)** | `scripts/prerender.mjs` | `package.json` (`build` script)<br>`client/src/components/Router.tsx` |
 | **3D Background, Shaders, WebGL Particles** | `client/src/components/ThreeBackground.tsx`<br>`client/src/components/ShootingStars.tsx` | `client/src/components/Hero.tsx`<br>`client/src/components/FloatingObject.tsx` |
 | **Audio, Sound Effects & Background Music** | `client/src/lib/stores/useAudio.tsx` | `client/src/components/Layout.tsx` |
 | **Styling, Color Themes, Fonts & Animations** | `client/src/index.css`<br>`tailwind.config.ts` | `client/src/lib/stores/useTheme.ts` |
@@ -63,6 +65,7 @@ graph TD
 - [`tsconfig.json`](file:///c:/work/DualSparkStudio/tsconfig.json): TypeScript configuration and path aliases (`@/*` -> `client/src/*`, `@shared/*` -> `shared/*`).
 - [`vite.config.ts`](file:///c:/work/DualSparkStudio/vite.config.ts): Vite build configuration, asset chunking, plugins, and path resolution.
 - [`tailwind.config.ts`](file:///c:/work/DualSparkStudio/tailwind.config.ts): Tailwind design tokens, typography, animations, and color scheme.
+- [`scripts/prerender.mjs`](file:///c:/work/DualSparkStudio/scripts/prerender.mjs): Playwright build-time pre-renderer. Spawns headless Chromium post-build, renders public routes (`/`, `/contact-only`), verifies metadata & headings, and outputs pre-rendered HTML to `dist/index.html` and `dist/contact-only/index.html`.
 - [`PROJECT_INDEX.md`](file:///c:/work/DualSparkStudio/PROJECT_INDEX.md): This file — master index and lookup directory.
 
 ---
@@ -177,10 +180,12 @@ graph TD
 
 - **Firm Name**: DualSpark Studio
 - **Structure**: Partnership firm
-- **Partners**: Yash Vilas Karanjule & Sahil Ramchandra Dhangadwade
+- **Founding Date**: January 2025 (`2025-01`)
+- **Founders / Partners**: Yash Vilas Karanjule & Sahil Ramchandra Dhanawade
 - **Headquarters / Base**: Pune, Maharashtra, India (serving clients everywhere)
 - **Primary Contacts**:
   - Phone / WhatsApp: `+91 9270269875`
+  - Secondary Phone: `+91 7057150584`
   - Email: `dualsparkstudio@gmail.com`
   - Official Domain: `https://dualsparkstudio.com/`
   - GitHub: `https://github.com/dualsparkstudio`
