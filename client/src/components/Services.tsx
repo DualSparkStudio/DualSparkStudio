@@ -41,12 +41,9 @@ const Services = () => {
 
   // Map service keys to icons
   const serviceIcons: Record<string, JSX.Element> = {
-    "Web Development": <FiMonitor size={28} />,
-    "Mobile Applications": <FiSmartphone size={28} />,
-    "E-commerce Solutions": <FiShoppingBag size={28} />,
-    "3D Interactive Experiences": <FiLayers size={28} />,
-    "Custom Web Applications": <FiCode size={28} />,
-    "Database & Backend Solutions": <FiDatabase size={28} />
+    "Website Development": <FiMonitor size={28} />,
+    "Resort & Villa Booking Websites": <FiLayers size={28} />,
+    "Software & Backend Development": <FiDatabase size={28} />
   };
 
   const containerVariants = {
@@ -70,7 +67,7 @@ const Services = () => {
 
   return (
     <section id="services" className="relative py-24 bg-background/50 backdrop-blur-md">
-      {/* Floating 3D elements for visual interest */}
+      {/* Floating decorative elements */}
       <div className="absolute top-40 right-20 hidden lg:block">
         <FloatingObject 
           size={1.8}
@@ -179,46 +176,46 @@ const Services = () => {
             <Accordion type="single" collapsible className="w-full space-y-4">
               <AccordionItem value="item-1" className="border-border/40">
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
-                  Do you build custom websites and direct booking systems for resorts, villas, and hotels?
+                  Do you build websites for resorts and villas?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  Yes. We engineer bespoke hospitality websites with commission-free direct booking engines, interactive room and villa showcases, real-time availability calendars, and secure multi-currency payment gateway integrations (Stripe, Razorpay, etc.).
+                  Yes. We have the most experience building resort and villa booking websites. We build for villa and resort owners in Lonavala, Mahabaleshwar, and Panchgani. Features we have built for clients include live availability calendars, online payments via Razorpay, WhatsApp enquiry buttons, and booking admin dashboards.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="border-border/40">
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
-                  How do 3D interactive elements and WebGL benefit my website?
+                  What features have you built for resort and villa clients?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  Interactive 3D configurators, virtual spaces, and real-time WebGL models let clients interact with products or spaces directly in their browser without downloading external apps.
+                  Features we have built for clients include a live availability calendar, online payments via Razorpay, WhatsApp enquiry buttons, and a booking admin dashboard.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="border-border/40">
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
-                  Can DualSpark Studio build custom business software and web applications?
+                  Can DualSpark Studio build custom software and backend systems?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  Absolutely. We build tailor-made SaaS platforms, customer portals, inventory and booking management tools, and scalable REST/GraphQL backends using React, TypeScript, Node.js, Express, and PostgreSQL.
+                  Yes. We provide website and software development, including custom backend engineering such as the backend platform we built for The Lead Hunter Club.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-4" className="border-border/40">
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
-                  How do you ensure fast mobile loading times while using 3D graphics?
+                  Where is DualSpark Studio located and what areas do you serve?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  We use progressive enhancement: critical DOM and above-the-fold content render instantly, while heavy 3D canvases, shaders, and animations are code-split, deferred, and dynamically scaled down on mobile devices (e.g., lower particle counts and disabled bloom post-processing).
+                  DualSpark Studio is a partnership firm founded in January 2025, based in Pune, Maharashtra. We operate remotely and serve clients everywhere. We build for villa and resort owners in Lonavala, Mahabaleshwar, and Panchgani.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-5" className="border-border/40">
                 <AccordionTrigger className="text-left font-semibold text-foreground hover:text-primary">
-                  Where is DualSpark Studio located and what markets do you serve?
+                  Who are the partners of DualSpark Studio?
                 </AccordionTrigger>
                 <AccordionContent className="text-muted-foreground text-sm leading-relaxed">
-                  DualSpark Studio is based in Pune, India, and serves clients everywhere.
+                  DualSpark Studio was founded by partners Yash Vilas Karanjule and Sahil Ramchandra Dhanawade.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -234,42 +231,42 @@ const Services = () => {
                 "mainEntity": [
                   {
                     "@type": "Question",
-                    "name": "Do you build custom websites and direct booking systems for resorts, villas, and hotels?",
+                    "name": "Do you build websites for resorts and villas?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Yes. We engineer bespoke hospitality websites with commission-free direct booking engines, interactive room and villa showcases, real-time availability calendars, and secure multi-currency payment gateway integrations."
+                      "text": "Yes. We have the most experience building resort and villa booking websites. We build for villa and resort owners in Lonavala, Mahabaleshwar, and Panchgani. Features we have built for clients include live availability calendars, online payments via Razorpay, WhatsApp enquiry buttons, and booking admin dashboards."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "How do 3D interactive elements and WebGL benefit my website?",
+                    "name": "What features have you built for resort and villa clients?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Interactive 3D configurators, virtual spaces, and real-time WebGL models let clients interact with products or spaces directly in their browser."
+                      "text": "Features we have built for clients include a live availability calendar, online payments via Razorpay, WhatsApp enquiry buttons, and a booking admin dashboard."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "Can DualSpark Studio build custom business software and web applications?",
+                    "name": "Can DualSpark Studio build custom software and backend systems?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "Absolutely. We build tailor-made SaaS platforms, customer portals, inventory and booking management tools, and scalable REST backends using React, TypeScript, Node.js, Express, and PostgreSQL."
+                      "text": "Yes. We provide website and software development, including custom backend engineering such as the backend platform we built for The Lead Hunter Club."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "How do you ensure fast mobile loading times while using 3D graphics?",
+                    "name": "Where is DualSpark Studio located and what areas do you serve?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "We use progressive enhancement: critical DOM and above-the-fold content render instantly, while heavy 3D canvases, shaders, and animations are code-split, deferred, and dynamically scaled down on mobile devices."
+                      "text": "DualSpark Studio is a partnership firm founded in January 2025, based in Pune, Maharashtra. We operate remotely and serve clients everywhere. We build for villa and resort owners in Lonavala, Mahabaleshwar, and Panchgani."
                     }
                   },
                   {
                     "@type": "Question",
-                    "name": "Where is DualSpark Studio located and what markets do you serve?",
+                    "name": "Who are the partners of DualSpark Studio?",
                     "acceptedAnswer": {
                       "@type": "Answer",
-                      "text": "DualSpark Studio is based in Pune, India, and serves clients everywhere."
+                      "text": "DualSpark Studio was founded by partners Yash Vilas Karanjule and Sahil Ramchandra Dhanawade."
                     }
                   }
                 ]

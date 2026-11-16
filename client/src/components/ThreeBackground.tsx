@@ -7,9 +7,28 @@ import {
 } from '@react-three/drei';
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import { Bloom, EffectComposer } from '@react-three/postprocessing';
-import { memo, Suspense, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Component, memo, Suspense, useEffect, useMemo, useRef, useState } from 'react';
 import * as THREE from 'three';
 import ShootingStars from './ShootingStars';
+
+class WebGLErrorBoundary extends React.Component<{ children: React.ReactNode }, { hasError: boolean }> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  componentDidCatch() {
+    // Gracefully handle WebGL failure (e.g. headless prerendering)
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+    return this.props.children;
+  }
+}
 
 // Performance-optimized 3D scene component
 const Scene = memo(({ isMobile }: { isMobile: boolean }) => {
@@ -167,6 +186,7 @@ Scene.displayName = 'Scene';
 
 const ThreeBackground = () => {
   const [isMobile, setIsMobile] = useState(false);
+  const [hasWebGL, setHasWebGL] = useState(true);
 
   useEffect(() => {
     const checkMobile = () => {
@@ -174,41 +194,58 @@ const ThreeBackground = () => {
     };
     checkMobile();
     window.addEventListener('resize', checkMobile);
+
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+      if (!gl) {
+        setHasWebGL(false);
+      }
+    } catch {
+      setHasWebGL(false);
+    }
+
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  if (!hasWebGL) {
+    return null;
+  }
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none transition-opacity duration-1000 opacity-100">
-      <Canvas
-        dpr={isMobile ? [1.0, 1.2] : [1.0, 1.5]}
-        gl={{
-          antialias: !isMobile,
-          alpha: true,
-          powerPreference: 'high-performance',
-          logarithmicDepthBuffer: false,
-          outputColorSpace: THREE.SRGBColorSpace,
-          toneMapping: THREE.ACESFilmicToneMapping,
-          toneMappingExposure: 1.2,
-        }}
-        camera={{ position: [0, 0, 20], fov: 70, near: 0.1, far: 200 }}
-        shadows={false}
-        frameloop="always"
-        performance={{ min: 0.5 }}
-      >
-        <AdaptiveDpr pixelated />
-        <Suspense fallback={null}>
-          <Scene isMobile={isMobile} />
-          <ShootingStars count={isMobile ? 12 : 30} area={100} speed={isMobile ? 25 : 40} frequency={0.1} />
-          <Preload all />
-        </Suspense>
+      <WebGLErrorBoundary>
+        <Canvas
+          dpr={isMobile ? [1.0, 1.2] : [1.0, 1.5]}
+          gl={{
+            antialias: !isMobile,
+            alpha: true,
+            powerPreference: 'high-performance',
+            logarithmicDepthBuffer: false,
+            outputColorSpace: THREE.SRGBColorSpace,
+            toneMapping: THREE.ACESFilmicToneMapping,
+            toneMappingExposure: 1.2,
+          }}
+          camera={{ position: [0, 0, 20], fov: 70, near: 0.1, far: 200 }}
+          shadows={false}
+          frameloop="always"
+          performance={{ min: 0.5 }}
+        >
+          <AdaptiveDpr pixelated />
+          <Suspense fallback={null}>
+            <Scene isMobile={isMobile} />
+            <ShootingStars count={isMobile ? 12 : 30} area={100} speed={isMobile ? 25 : 40} frequency={0.1} />
+            <Preload all />
+          </Suspense>
 
-        {/* Bloom post-processing only on desktop to save mobile GPUs */}
-        {!isMobile && (
-          <EffectComposer enabled multisampling={0}>
-            <Bloom luminanceThreshold={0.1} intensity={0.8} />
-          </EffectComposer>
-        )}
-      </Canvas>
+          {/* Bloom post-processing only on desktop to save mobile GPUs */}
+          {!isMobile && (
+            <EffectComposer enabled multisampling={0}>
+              <Bloom luminanceThreshold={0.1} intensity={0.8} />
+            </EffectComposer>
+          )}
+        </Canvas>
+      </WebGLErrorBoundary>
     </div>
   );
 };

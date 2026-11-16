@@ -33,7 +33,7 @@ const AdminProjects = ({ projects, onAddProject, onUpdateProject, onDeleteProjec
   });
   const [techInput, setTechInput] = useState('');
 
-  const categories = ['Web', '3D', 'Mobile', 'E-commerce', 'Dashboard', 'Game'];
+  const categories = ['Web Development', 'Software Development', 'Resort & Villa Booking Websites'];
 
   const resetForm = () => {
     setFormData({

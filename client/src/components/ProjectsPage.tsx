@@ -112,7 +112,7 @@ const ProjectsPage = ({ projects }: ProjectsPageProps) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-muted-foreground max-w-3xl mx-auto"
             >
-              Explore our portfolio of innovative web applications, 3D experiences, and cutting-edge digital solutions
+              Explore our portfolio of web applications and digital software solutions
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 20 }}

@@ -221,18 +221,6 @@ const Layout = ({ navigate }: LayoutProps) => {
             <Button 
               variant="ghost" 
               size="sm"
-              aria-label="Visit DualSpark Studio LinkedIn profile"
-              onClick={() => {
-                playHit();
-                window.open(SOCIAL_LINKS.linkedin, '_blank');
-              }}
-              className="text-muted-foreground hover:text-primary transition-colors duration-200 btn-hover-effect"
-            >
-              LinkedIn
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="sm"
               aria-label="Visit DualSpark Studio GitHub profile"
               onClick={() => {
                 playHit();

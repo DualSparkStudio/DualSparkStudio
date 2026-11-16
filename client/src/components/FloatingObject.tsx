@@ -69,13 +69,22 @@ import { useState, useEffect } from 'react';
 
 // Wrapper component that provides the Canvas context (desktop only to prevent multi-context stalls on mobile)
 const FloatingObject = (props: FloatingObjectProps) => {
-  const [isDesktop, setIsDesktop] = useState(false);
+  const [hasWebGL, setHasWebGL] = useState(false);
 
   useEffect(() => {
-    setIsDesktop(window.innerWidth >= 1024);
+    if (window.innerWidth < 1024) return;
+    try {
+      const canvas = document.createElement('canvas');
+      const gl = canvas.getContext('webgl2') || canvas.getContext('webgl');
+      if (gl) {
+        setHasWebGL(true);
+      }
+    } catch {
+      setHasWebGL(false);
+    }
   }, []);
 
-  if (!isDesktop) {
+  if (!hasWebGL) {
     return null;
   }
 

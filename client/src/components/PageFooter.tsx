@@ -32,15 +32,6 @@ export const PageFooter = () => {
               <Button
                 variant="ghost"
                 size="sm"
-                aria-label="Visit DualSpark Studio LinkedIn profile"
-                onClick={() => window.open(SOCIAL_LINKS.linkedin, '_blank', 'noopener,noreferrer')}
-                className="text-muted-foreground hover:text-primary"
-              >
-                LinkedIn
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
                 aria-label="Visit DualSpark Studio GitHub profile"
                 onClick={() => window.open(SOCIAL_LINKS.github, '_blank', 'noopener,noreferrer')}
                 className="text-muted-foreground hover:text-primary"

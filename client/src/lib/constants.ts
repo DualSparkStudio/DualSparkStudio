@@ -39,9 +39,8 @@ export const SECTIONS = {
 
 // Social media links
 export const SOCIAL_LINKS = {
-  github: 'https://github.com/dualsparkstudio',
-  linkedin: 'https://www.linkedin.com/in/dualspark-studio-a50757363',
-  instagram: 'https://www.instagram.com/dualsparkstudio?igsh=MXhndG4xMHV3cHY4ZQ=='
+  github: 'https://github.com/DualSparkStudio',
+  instagram: 'https://www.instagram.com/dualsparkstudio',
 };
 
 // Contact information

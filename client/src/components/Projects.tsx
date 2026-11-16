@@ -61,7 +61,7 @@ const Projects = () => {
 
   return (
     <section id="projects" className="relative py-24 overflow-hidden bg-background/80 backdrop-blur-md">
-      {/* Floating 3D elements */}
+      {/* Floating decorative elements */}
       <div className="absolute top-20 left-10 hidden lg:block">
         <FloatingObject 
           size={1.5}

@@ -4,7 +4,7 @@ import emailjs from '@emailjs/browser';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import { gsap } from 'gsap';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { FiGithub, FiInstagram, FiLinkedin, FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
+import { FiGithub, FiInstagram, FiMail, FiMapPin, FiPhone, FiSend } from 'react-icons/fi';
 import { toast } from 'sonner';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -199,25 +199,12 @@ const Contact = () => {
                       variant="outline"
                       size="icon"
                       className="w-10 h-10 rounded-full relative z-10"
-                      onClick={() => handleSocialClick(SOCIAL_LINKS.linkedin)}
-                      title="LinkedIn"
-                    >
-                      <FiLinkedin size={18} />
-                    </Button>
-                  </div>
-                  
-                  <div className="gradient-border rounded-full bg-background">
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="w-10 h-10 rounded-full relative z-10"
                       onClick={() => handleSocialClick(SOCIAL_LINKS.github)}
                       title="GitHub"
                     >
                       <FiGithub size={18} />
                     </Button>
                   </div>
-                  
                   <div className="gradient-border rounded-full bg-background">
                     <Button
                       variant="outline"

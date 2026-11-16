@@ -78,7 +78,7 @@ graph TD
   - Primary HTML document mounted by Vite.
   - SEO Meta tags (Title, Description, Keywords, Robots, Canonical).
   - OpenGraph and Twitter card metadata.
-  - Schema.org structured data: `ProfessionalService` JSON-LD (`founder` array with Yash Vilas Karanjule and Sahil Ramchandra Dhanawade, foundingDate 2025-01, locality Pune, region Maharashtra, country IN, phone, email, sameAs).
+  - Schema.org structured data: `ProfessionalService` JSON-LD (`founder` array with Yash Vilas Karanjule and Sahil Ramchandra Dhanawade, foundingDate 2025-01, locality Pune, region Maharashtra, country IN, phone, email, sameAs, and `hasOfferCatalog` listing only: `custom web development`, `software development`, `resort and villa booking websites`).
 
 ---
 
@@ -86,7 +86,7 @@ graph TD
 - [`client/public/_redirects`](file:///c:/work/DualSparkStudio/client/public/_redirects):
   - Netlify SPA rewrite directive: `/* /index.html 200`.
   - Google verification bypass: `/google3516721451dfac13.html /google3516721451dfac13.html 200!`.
-- [`client/public/llms.txt`](file:///c:/work/DualSparkStudio/client/public/llms.txt): Plaintext specification for AI search agents and LLM crawlers outlining core studio capabilities, services, tech stack, and verified contact info.
+- [`client/public/llms.txt`](file:///c:/work/DualSparkStudio/client/public/llms.txt): Plaintext specification for AI search agents and LLM crawlers written strictly from confirmed facts: firm founding, partners, contact details, services, confirmed features, and client work.
 - [`client/public/robots.txt`](file:///c:/work/DualSparkStudio/client/public/robots.txt): Search engine crawler directives (`Allow: /`, `Disallow: /admin`).
 - [`client/public/sitemap.xml`](file:///c:/work/DualSparkStudio/client/public/sitemap.xml): XML sitemap listing indexable routes.
 - [`client/public/textures/`](file:///c:/work/DualSparkStudio/client/public/textures/): PBR textures and skyboxes for 3D canvases.
@@ -140,7 +140,7 @@ graph TD
 #### Data & State Libraries (`client/src/lib/`)
 - [`client/src/lib/constants.ts`](file:///c:/work/DualSparkStudio/client/src/lib/constants.ts):
   - Canonical contact details: phone numbers, email, structured address.
-  - Social links (`SOCIAL_LINKS`: GitHub, LinkedIn, Instagram).
+  - Social links (`SOCIAL_LINKS`: GitHub, Instagram).
   - Navigation anchors (`NAV_ITEMS`).
 - [`client/src/lib/data.ts`](file:///c:/work/DualSparkStudio/client/src/lib/data.ts):
   - `projects`: Master array of client projects (type `Project[]`).
@@ -153,9 +153,9 @@ graph TD
 - Standard Accessible Shadcn / Radix UI primitives: `accordion`, `button`, `card`, `dialog`, `input`, `textarea`, `tabs`, `sonner`, `sheet`, etc.
 
 #### Pages (`client/src/pages/`)
-- [`client/src/pages/About.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/About.tsx): Dedicated About page (`/about`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, founding story (partnership by Yash Vilas Karanjule and Sahil Ramchandra Dhanawade in Jan 2025 in Pune), and core pillars.
-- [`client/src/pages/Work.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/Work.tsx): Dedicated Work & Portfolio page (`/work`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, engineering specializations, and case study consultations.
-- [`client/src/pages/ResortVillaWebsites.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/ResortVillaWebsites.tsx): Dedicated Resort & Villa Booking Websites page (`/resort-villa-websites`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, commission-free direct booking features, and real-time availability.
+- [`client/src/pages/About.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/About.tsx): Dedicated About page (`/about`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, founding facts (partnership by Yash Vilas Karanjule and Sahil Ramchandra Dhanawade in Jan 2025 in Pune, Maharashtra), remote operations, services, and contacts.
+- [`client/src/pages/Work.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/Work.tsx): Dedicated Work page (`/work`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, with short entries for Lonavala Stays, Brick & Beam Villa, Grand Valley Resort, and The Lead Hunter Club.
+- [`client/src/pages/ResortVillaWebsites.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/ResortVillaWebsites.tsx): Dedicated Resort & Villa Booking Websites page (`/resort-villa-websites`) setting its own title, description, canonical, `og:url` (content attribute), `<h1>`, stating we build for villa and resort owners in Lonavala, Mahabaleshwar and Panchgani, noting our work includes a villa website in Lonavala and a resort website in Bhilar, Mahabaleshwar, listing features we have built for clients (live availability calendar, online payments via Razorpay, WhatsApp enquiry buttons, booking admin dashboard), and links to work entries.
 - [`client/src/pages/Admin.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/Admin.tsx): Admin authentication and dashboard gateway.
 - [`client/src/pages/AdminDashboard.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/AdminDashboard.tsx): CMS panel for live project management.
 - [`client/src/pages/ContactButtons.tsx`](file:///c:/work/DualSparkStudio/client/src/pages/ContactButtons.tsx): Minimal mobile contact tree (`/contact-only`).
@@ -191,17 +191,23 @@ graph TD
 - **Firm Name**: DualSpark Studio
 - **Structure**: Partnership firm
 - **Founding Date**: January 2025 (`2025-01`)
-- **Founders / Partners**: Yash Vilas Karanjule & Sahil Ramchandra Dhanawade
-- **Headquarters / Base**: Pune, Maharashtra, India (serving clients everywhere)
+- **Partners**: Yash Vilas Karanjule and Sahil Ramchandra Dhanawade
+- **Headquarters / Base**: Pune, Maharashtra. Remote, serves clients everywhere.
 - **Primary Contacts**:
-  - Phone / WhatsApp: `+91 9270269875`
-  - Secondary Phone: `+91 7057150584`
+  - Phone / WhatsApp: `+91 92702 69875`
+  - Second Phone: `+91 70571 50584`
   - Email: `dualsparkstudio@gmail.com`
   - Official Domain: `https://dualsparkstudio.com/`
-  - GitHub: `https://github.com/dualsparkstudio`
+  - GitHub: `https://github.com/DualSparkStudio`
+  - Instagram: `https://www.instagram.com/dualsparkstudio`
 - **Core Domain Expertise**:
-  - Full-stack custom website and software development.
-  - Resort, hotel, and luxury villa booking platforms.
+  - Website and software development.
+  - Most experience: resort and villa booking websites.
+  - Areas we work in: Lonavala, Mahabaleshwar, Panchgani.
   - Backend engineering (notably the backend platform for *The Lead Hunter Club*).
-  - High-performance 3D interactive WebGL and Three.js experiences.
+- **Features We Have Built for Clients**:
+  - Live availability calendar
+  - Online payments via Razorpay
+  - WhatsApp enquiry buttons
+  - Booking admin dashboard
 
