@@ -102,7 +102,7 @@ const Projects = () => {
               visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: 0.2 } },
             }}
           >
-            Explore our portfolio of innovative websites and interactive applications
+            Website and software development projects by DualSpark Studio
           </motion.p>
         </div>
         

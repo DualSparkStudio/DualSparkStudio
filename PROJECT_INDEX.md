@@ -117,8 +117,7 @@ graph TD
   - Main landing viewport.
   - GSAP headline animations, 3D Canvas integration (`ThreeBackground`), and CTA buttons ("View Our Work", "Contact Us").
 - [`client/src/components/Projects.tsx`](file:///c:/work/DualSparkStudio/client/src/components/Projects.tsx):
-  - Portfolio project grid.
-  - Returns `null` when `projects.length === 0`.
+  - Portfolio project grid on the homepage showcasing DualSpark Studio's confirmed client projects (Lonavala Stays, Brick & Beam Villa, Grand Valley Resort, and The Lead Hunter Club).
   - Renders project card image, tags, and live external links.
 - [`client/src/components/Services.tsx`](file:///c:/work/DualSparkStudio/client/src/components/Services.tsx):
   - Interactive service cards.
@@ -143,7 +142,7 @@ graph TD
   - Social links (`SOCIAL_LINKS`: GitHub, Instagram).
   - Navigation anchors (`NAV_ITEMS`).
 - [`client/src/lib/data.ts`](file:///c:/work/DualSparkStudio/client/src/lib/data.ts):
-  - `projects`: Master array of client projects (type `Project[]`).
+  - `projects`: Master array of confirmed client projects (type `Project[]`), populating the homepage Projects section.
   - `services`: Master list of services and feature bullet points (type `Service[]`).
 - [`client/src/lib/stores/useAudio.tsx`](file:///c:/work/DualSparkStudio/client/src/lib/stores/useAudio.tsx): Zustand audio player and SFX manager.
 - [`client/src/lib/stores/useTheme.ts`](file:///c:/work/DualSparkStudio/client/src/lib/stores/useTheme.ts): Dark/light mode theme store.
