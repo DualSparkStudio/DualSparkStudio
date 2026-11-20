@@ -28,4 +28,4 @@ DualSpark Studio is a partnership firm founded January 2025, based in Pune, Maha
 1. Lonavala Stays, https://lonavalastays.in/ - villa website for a client in Lonavala.
 2. Brick & Beam Villa, https://brickandbeamvilla.netlify.app/ - villa website for a client.
 3. Grand Valley Resort, https://grandvalleyresorts.com/ - resort website for a client in Bhilar, Mahabaleshwar.
-4. The Lead Hunter Club, https://www.theleadhunterclub.com/ - we did the backend engineering. Someone else built the frontend.
+4. The Lead Hunter Club, https://www.theleadhunterclub.com/ - backend engineering, API architecture, and database systems.

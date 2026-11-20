@@ -92,6 +92,7 @@ graph TD
 - [`client/public/sitemap.xml`](file:///c:/work/DualSparkStudio/client/public/sitemap.xml): XML sitemap listing indexable routes.
 - [`client/public/textures/`](file:///c:/work/DualSparkStudio/client/public/textures/): PBR textures and skyboxes for 3D canvases.
 - [`client/public/geometries/`](file:///c:/work/DualSparkStudio/client/public/geometries/): GLTF 3D model files.
+- [`client/public/images/projects/`](file:///c:/work/DualSparkStudio/client/public/images/projects/): Real screenshots for client portfolio projects (Lonavala Stays, Brick & Beam Villa, Grand Valley Resort, and The Lead Hunter Club).
 
 ---
 
