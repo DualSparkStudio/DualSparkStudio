@@ -68,7 +68,8 @@ graph TD
 - [`tsconfig.json`](file:///c:/work/DualSparkStudio/tsconfig.json): TypeScript configuration and path aliases (`@/*` -> `client/src/*`, `@shared/*` -> `shared/*`).
 - [`vite.config.ts`](file:///c:/work/DualSparkStudio/vite.config.ts): Vite build configuration, asset chunking, plugins, and path resolution.
 - [`tailwind.config.ts`](file:///c:/work/DualSparkStudio/tailwind.config.ts): Tailwind design tokens, typography, animations, and color scheme.
-- [`scripts/prerender.mjs`](file:///c:/work/DualSparkStudio/scripts/prerender.mjs): Playwright build-time pre-renderer. Spawns headless Chromium post-build, renders public routes (`/`, `/about`, `/work`, `/resort-villa-websites`, `/contact-only`), verifies metadata, canonical, og:url, & headings, and outputs pre-rendered HTML to `dist/index.html` and `dist/<route>/index.html`. Generates `dist/sitemap.xml` dynamically without dirtying `client/public/sitemap.xml`.
+- [`netlify.toml`](file:///c:/work/DualSparkStudio/netlify.toml): Netlify build and routing configuration (`command = "npx playwright install chromium && npm run build"`, `publish = "dist"`, SPA redirect `/* -> /index.html 200`).
+- [`scripts/prerender.mjs`](file:///c:/work/DualSparkStudio/scripts/prerender.mjs): Playwright build-time pre-renderer with auto-install and CI fallback resilience. Spawns headless Chromium post-build, renders public routes (`/`, `/about`, `/work`, `/resort-villa-websites`, `/contact-only`), verifies metadata, canonical, og:url, & headings, and outputs pre-rendered HTML to `dist/index.html` and `dist/<route>/index.html`. Generates `dist/sitemap.xml` dynamically without dirtying `client/public/sitemap.xml`.
 - [`PROJECT_INDEX.md`](file:///c:/work/DualSparkStudio/PROJECT_INDEX.md): This file — master index and lookup directory.
 
 ---

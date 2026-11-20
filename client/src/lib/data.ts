@@ -31,7 +31,7 @@ export const projects: Project[] = [
     imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80',
     technologies: ['Website Development', 'Resort Website'],
     category: 'Resort & Villa Websites',
-    link: null,
+    link: 'https://grandvalleyresorts.com/',
     githubLink: null,
     featured: true,
   },

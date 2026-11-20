@@ -54,7 +54,7 @@ const Work = () => {
       name: 'Grand Valley Resort',
       description: 'Resort website for a client in Bhilar, Mahabaleshwar.',
       role: 'Website development',
-      link: null,
+      link: 'https://grandvalleyresorts.com/',
     },
     {
       name: 'The Lead Hunter Club',

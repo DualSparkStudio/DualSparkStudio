@@ -129,16 +129,40 @@ async function prerender() {
 
   let browser;
   try {
-    browser = await chromium.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-        '--enable-unsafe-webgl',
-      ],
-    });
+    try {
+      browser = await chromium.launch({
+        headless: true,
+        args: [
+          '--no-sandbox',
+          '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
+          '--disable-gpu',
+          '--enable-unsafe-webgl',
+        ],
+      });
+    } catch (launchErr) {
+      console.warn('⚠️ Playwright chromium.launch failed:', launchErr.message);
+      console.log('🔄 Attempting to install Playwright chromium...');
+      try {
+        const { execSync } = await import('node:child_process');
+        execSync('npx playwright install chromium', { stdio: 'inherit' });
+        browser = await chromium.launch({
+          headless: true,
+          args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu',
+            '--enable-unsafe-webgl',
+          ],
+        });
+      } catch (installErr) {
+        console.warn('⚠️ Could not launch or auto-install Playwright chromium:', installErr.message);
+        console.warn('⚠️ Falling back: Generating sitemap only, keeping Vite SPA bundle intact.');
+        generateSitemap(PUBLIC_ROUTES);
+        return;
+      }
+    }
 
     const context = await browser.newContext({
       viewport: { width: 1280, height: 800 },
